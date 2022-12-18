@@ -1,0 +1,31 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gerenciador de Usuários</title>
+</head>
+<body>
+	<h1>Usuários</h1>
+	<table border="1">
+		<tr>
+			<th>Id</th>
+			<th>Nome</th>
+			<th>Email</th>
+			<th></th>
+		</tr>
+
+		<tr th:each="user : ${users}">
+			<td><span th:text="${user.id}"></span></td>
+			<td><span th:text="${user.name}"></span></td>
+			<td><span th:text="${user.email}"></span></td>
+			<td><a th:href="@{form/{id}(id=${user.id})}" th:method="get">Update</a>
+				<a th:href="@{delete/{id}(id=${user.id})}" th:method="delete">Delete</a>
+			</td>
+		</tr>
+	</table>
+	<br>
+	<a href="form">
+		<button>Add User</button>
+	</a>
+</body>
+</html>
